@@ -20,6 +20,12 @@ class UserFactory extends Factory
         return [
             'id' => Str::uuid(),
             'name' => fake()->name(),
+            'firstname' => fake()->firstName(),
+            'birthdate' => fake()->date('Y-m-m', 'now'),
+            'sex' => fake()->randomElement(['M', 'F']),
+            'telephone' => fake()->phoneNumber(),
+            'address' => fake()->streetAddress(),
+            'first_connexion' => fake()->randomElement([true, false]),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => Hash::make('123456789'), // password

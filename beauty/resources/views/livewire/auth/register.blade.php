@@ -1,97 +1,4 @@
 @section('title', 'Inscription')
-
-{{-- <div>
-    <div class="sm:mx-auto sm:w-full sm:max-w-md">
-        <a href="{{ route('home') }}">
-            <x-logo class="w-auto h-16 mx-auto text-indigo-600" />
-        </a>
-
-        <h2 class="mt-6 text-3xl font-extrabold text-center text-gray-900 leading-9">
-            Create a new account
-        </h2>
-
-        <p class="mt-2 text-sm text-center text-gray-600 leading-5 max-w">
-            Or
-            <a href="{{ route('login') }}"
-                class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150">
-                sign in to your account
-            </a>
-        </p>
-    </div>
-
-    <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div class="px-4 py-8 bg-white shadow sm:rounded-lg sm:px-10">
-            <form wire:submit.prevent="register">
-                <div>
-                    <label for="name" class="block text-sm font-medium text-gray-700 leading-5">
-                        Name
-                    </label>
-
-                    <div class="mt-1 rounded-md shadow-sm">
-                        <input wire:model.lazy="name" id="name" type="text" required autofocus
-                            class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('name') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:ring-red @enderror" />
-                    </div>
-
-                    @error('name')
-                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                </div>
-
-                <div class="mt-6">
-                    <label for="email" class="block text-sm font-medium text-gray-700 leading-5">
-                        Email address
-                    </label>
-
-                    <div class="mt-1 rounded-md shadow-sm">
-                        <input wire:model.lazy="email" id="email" type="email" required
-                            class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('email') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:ring-red @enderror" />
-                    </div>
-
-                    @error('email')
-                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                </div>
-
-                <div class="mt-6">
-                    <label for="password" class="block text-sm font-medium text-gray-700 leading-5">
-                        Password
-                    </label>
-
-                    <div class="mt-1 rounded-md shadow-sm">
-                        <input wire:model.lazy="password" id="password" type="password" required
-                            class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('password') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:ring-red @enderror" />
-                    </div>
-
-                    @error('password')
-                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                </div>
-
-                <div class="mt-6">
-                    <label for="password_confirmation" class="block text-sm font-medium text-gray-700 leading-5">
-                        Confirm Password
-                    </label>
-
-                    <div class="mt-1 rounded-md shadow-sm">
-                        <input wire:model.lazy="passwordConfirmation" id="password_confirmation" type="password"
-                            required
-                            class="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 appearance-none rounded-md focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
-                    </div>
-                </div>
-
-                <div class="mt-6">
-                    <span class="block w-full rounded-md shadow-sm">
-                        <button type="submit"
-                            class="flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:ring-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
-                            Register
-                        </button>
-                    </span>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
---}}
 <div class="container px-6 h-full">
     <div class="flex justify-center items-center flex-wrap h-full g-6 text-gray-800">
         <div class="md:w-8/12 lg:w-6/12 mb-12 md:mb-0">
@@ -99,10 +6,40 @@
                 alt="Phone image" />
         </div>
         <div class="md:w-8/12 lg:w-5/12 lg:ml-20">
-            <form wire:submit.prevent="authenticate">
+            <h2 class="mb-10 text-3xl font-extrabold text-center text-gray-900 leading-9">
+                Créer un nouveau compte
+            </h2>
+            <form wire:submit.prevent="register">
+                <!-- Name input -->
+                <div class="mb-6">
+                    <input wire:model.lazy="name" id="name" name="name" type="name" required autofocus value="{{ old('name') }}"
+                        class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                        placeholder="Nom" />
+                    @error('name')
+                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
+                </div>
+                <!-- Firstname input -->
+                <div class="mb-6">
+                    <input wire:model.lazy="firstname" id="firstname" name="firstname" type="firstname" required value="{{ old('firstname') }}"
+                        class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                        placeholder="Prénom" />
+                    @error('firstname')
+                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
+                </div>
+                <!-- Telephone input -->
+                <div class="mb-6">
+                    <input wire:model.lazy="telephone" id="telephone" name="telephone" type="tel" required value="{{ old('telephone') }}"
+                        class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                        placeholder="Télephone" />
+                    @error('telephone')
+                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
+                </div>
                 <!-- Email input -->
                 <div class="mb-6">
-                    <input wire:model.lazy="email" id="email" name="email" type="email" required autofocus
+                    <input wire:model.lazy="email" id="email" name="email" type="email" required autofocus value="{{ old('email') }}"
                         class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                         placeholder="Adresse email" />
                     @error('email')
@@ -119,24 +56,18 @@
                     <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                     @enderror
                 </div>
-
-                <div class="flex justify-between items-center mb-6">
-                    <div class="form-group form-check">
-                        <input wire:model.lazy="remember" id="remember" type="checkbox"
-                            class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer">
-                        <label class="form-check-label inline-block text-gray-800" for="exampleCheck2">Remember
-                            me</label>
-                    </div>
-                    <a href="{{ route('password.request') }}"
-                        class="text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 duration-200 transition ease-in-out">Mot
-                        de passe oublié ?</a>
+                <!-- Password confirmation input -->
+                <div class="mb-6">
+                    <input wire:model.lazy="passwordConfirmation" id="password_confirmation" type="password" required
+                        class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                        placeholder="Confirmation du mot de passe" />
                 </div>
 
                 <!-- Submit button -->
                 <button type="submit"
                     class="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full"
                     data-mdb-ripple="true" data-mdb-ripple-color="light">
-                    Connexion
+                    Inscription
                 </button>
 
                 <div
