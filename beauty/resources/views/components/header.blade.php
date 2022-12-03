@@ -1,5 +1,5 @@
 <nav
-  class="relative w-full flex flex-wrap items-center justify-between py-7 bg-indigo-600 text-gray-200 shadow-lg navbar navbar-expand-lg navbar-light">
+  class="relative z-10 w-full flex flex-wrap items-center justify-between py-7 bg-indigo-600 text-gray-200 shadow-lg navbar navbar-expand-lg navbar-light">
   <div class="container-fluid w-full flex flex-wrap items-center justify-between px-6">
     <button
       class="navbar-toggler text-gray-200 border-0 hover:shadow-none hover:no-underline py-2 px-2.5 bg-transparent focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline"
@@ -13,36 +13,19 @@
       </svg>
     </button>
     <div class="collapse navbar-collapse flex-grow items-center" id="navbarSupportedContent1">
-      <a class="text-xl text-white pr-2 font-semibold" href="#">Navbar</a>
-      <!-- Left links -->
-      {{-- <ul class="navbar-nav flex flex-col pl-0 list-style-none mr-auto">
+      <a class="text-xl text-white pr-2 font-semibold" href="/">NavBar</a>
+      <ul class="navbar-nav flex flex-col pl-0 list-style-none mr-auto">
         <li class="nav-item p-2">
-          <a class="nav-link text-white" href="#">Dashboard</a>
+          <a href="{{ route('clients.list') }}"
+            class="font-medium text-white hover:text-gray-100 focus:outline-none focus:underline transition ease-in-out duration-150">Mes clients</a>
         </li>
         <li class="nav-item p-2">
-          <a class="nav-link text-white opacity-60 hover:opacity-80 focus:opacity-80 p-0" href="#">Team</a>
+          <a href="#"
+            class="font-medium text-white hover:text-gray-100 focus:outline-none focus:underline transition ease-in-out duration-150">Mon catalogue</a>
         </li>
-        <li class="nav-item p-2">
-          <a class="nav-link text-white opacity-60 hover:opacity-80 focus:opacity-80 p-0" href="#">Projects</a>
-        </li>
-      </ul> --}}
-      <!-- Left links -->
+      </ul>
     </div>
-    <!-- Collapsible wrapper -->
-
-    <!-- Right elements -->
     <div class="flex items-center relative">
-      <!-- Icon -->
-      {{-- <a class="text-white opacity-60 hover:opacity-80 focus:opacity-80 mr-4" href="#">
-        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="shopping-cart" class="w-4" role="img"
-          xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-          <path fill="currentColor"
-            d="M528.12 301.319l47.273-208C578.806 78.301 567.391 64 551.99 64H159.208l-9.166-44.81C147.758 8.021 137.93 0 126.529 0H24C10.745 0 0 10.745 0 24v16c0 13.255 10.745 24 24 24h69.883l70.248 343.435C147.325 417.1 136 435.222 136 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-15.674-6.447-29.835-16.824-40h209.647C430.447 426.165 424 440.326 424 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-22.172-12.888-41.332-31.579-50.405l5.517-24.276c3.413-15.018-8.002-29.319-23.403-29.319H218.117l-6.545-32h293.145c11.206 0 20.92-7.754 23.403-18.681z">
-          </path>
-        </svg>
-      </a> --}}
-
-
       <div class="flex">
         @if (Route::has('login'))
         <div class="flex space-x-4">
@@ -78,8 +61,22 @@
           <div class="dropdown relative">
             <a class="dropdown-toggle flex items-center hidden-arrow" href="#" id="dropdownMenuButton2" role="button"
               data-bs-toggle="dropdown" aria-expanded="false">
-              <img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full"
-                style="height: 25px; width: 25px" alt="" loading="lazy" />
+              @if (Auth::user()->avatar == null)
+              <div class="relative w-8 h-8">
+                <img class="rounded-full border border-gray-100 shadow-sm"
+                  src="{{ 'https://ui-avatars.com/api/?background=ffff&color=black/?uppercase=true&name=' . Auth::user()->name. '+' . Auth::user()->firstname}}"
+                  alt="user image" />
+                <div class="absolute top-0 right-0 h-3 w-3 my-1 border-2 border-white rounded-full bg-green-400 z-2">
+                </div>
+              </div>
+              @else
+              <div class="relative w-8 h-8">
+                <img class="rounded-full border border-gray-100 shadow-sm"
+                  src="{{ asset('image/'.Auth::user()->image) }}" alt="user image" />
+                <div class="absolute top-0 right-0 h-3 w-3 my-1 border-2 border-white rounded-full bg-green-400 z-2">
+                </div>
+              </div>
+              @endif
             </a>
             <ul
               class="dropdown-menu min-w-max absolute hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 m-0 bg-clip-padding border-none left-auto right-0"
@@ -90,7 +87,7 @@
               </li>
               <li>
                 <a class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
-                  href="#">Profil</a>
+                  href="{{ route('profil.view') }}">Profil</a>
               </li>
               <li>
                 <a href="{{ route('logout') }}"
@@ -118,12 +115,10 @@
               @endif
             </li>
           </ul>
-
           @endauth
         </div>
         @endif
       </div>
     </div>
-    <!-- Right elements -->
   </div>
 </nav>

@@ -27,7 +27,6 @@
                 </div>
             @endif
         </div> --}}
-
         <div class="flex items-center justify-center">
             <div class="flex flex-col justify-around">
                 <div class="space-y-6">
@@ -56,5 +55,6 @@
                 </div>
             </div>
         </div>
+        <div wire:loading>loading ...</div>
     </div>
 @endsection

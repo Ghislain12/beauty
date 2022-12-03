@@ -27,8 +27,7 @@
 </head>
 
 <body>
-    <x-header></x-header>   
-
+    <x-header></x-header>
     @yield('body')
 </body>
 

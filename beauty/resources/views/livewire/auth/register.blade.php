@@ -10,27 +10,61 @@
                 Créer un nouveau compte
             </h2>
             <form wire:submit.prevent="register">
-                <!-- Name input -->
-                <div class="mb-6">
-                    <input wire:model.lazy="name" id="name" name="name" type="name" required autofocus value="{{ old('name') }}"
-                        class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                        placeholder="Nom" />
-                    @error('name')
-                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
+                <div class="flex gap-2">
+                    <!-- Name input -->
+                    <div class="mb-6">
+                        <input wire:model.lazy="name" id="name" name="name" type="name" required autofocus
+                            value="{{ old('name') }}"
+                            class="form-control capitalize block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                            placeholder="Nom" />
+                        @error('name')
+                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <!-- Firstname input -->
+                    <div class="mb-6">
+                        <input wire:model.lazy="firstname" id="firstname" name="firstname" type="firstname" required
+                            value="{{ old('firstname') }}"
+                            class="form-control capitalize block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                            placeholder="Prénom" />
+                        @error('firstname')
+                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
                 </div>
-                <!-- Firstname input -->
-                <div class="mb-6">
-                    <input wire:model.lazy="firstname" id="firstname" name="firstname" type="firstname" required value="{{ old('firstname') }}"
-                        class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                        placeholder="Prénom" />
-                    @error('firstname')
-                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
+                <div class="mb-6 flex justify-between">
+                    <label for="">Genre:</label>
+                    <div>
+                        <div class="form-check form-check-inline">
+                            <input wire:model.lazy="sex"
+                                class="form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                                type="radio" name="inlineRadioOptions" id="inlineRadio1" value="H">
+                            <label class="form-check-label inline-block text-gray-800" for="inlineRadio10">Homme</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input wire:model.lazy="sex"
+                                class="form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                                type="radio" name="inlineRadioOptions" id="inlineRadio2" value="F">
+                            <label class="form-check-label inline-block text-gray-800" for="inlineRadio20">Femme</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input wire:model.lazy="sex"
+                                class="form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                                type="radio" name="inlineRadioOptions" id="inlineRadio2" value="A">
+                            <label class="form-check-label inline-block text-gray-800"
+                                for="inlineRadio20">Autres</label>
+                        </div>
+                    </div>
+
                 </div>
+                @error('sex')
+                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                @enderror
+
                 <!-- Telephone input -->
                 <div class="mb-6">
-                    <input wire:model.lazy="telephone" id="telephone" name="telephone" type="tel" required value="{{ old('telephone') }}"
+                    <input wire:model.lazy="telephone" id="telephone" name="telephone" type="tel" required
+                        value="{{ old('telephone') }}"
                         class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                         placeholder="Télephone" />
                     @error('telephone')
@@ -39,7 +73,8 @@
                 </div>
                 <!-- Email input -->
                 <div class="mb-6">
-                    <input wire:model.lazy="email" id="email" name="email" type="email" required autofocus value="{{ old('email') }}"
+                    <input wire:model.lazy="email" id="email" name="email" type="email" required autofocus
+                        value="{{ old('email') }}"
                         class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                         placeholder="Adresse email" />
                     @error('email')
